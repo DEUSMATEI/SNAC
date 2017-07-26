@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<title>Snac</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-navbar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-phone,.fa-book {font-size:200px}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+            body, html
+            {
+                margin: 0; padding: 0; height: 100%; overflow: hidden;
+            }
+</style>
+<head><link rel="shortcut icon" href="snac.infoel.ro/infoelsnac/Public/Logo.jpg"></head>
+<body>
+<!-- Navbar -->
+<div class="w3-top">
+  <ul class="w3-navbar w3-red w3-card-2 w3-left-align w3-large">
+    <li class="w3-hide-medium w3-hide-large w3-opennav w3-right">
+      <a class="w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    </li>
+    <li class="w3-hide-small"><a class="w3-padding-large w3-hover-white" onclick="go_home();">SNAC</a></li>
+    <li class="w3-hide-small"><div id="b_utilizatori"  class="w3-padding-large w3-hover-white" onclick="go_utilizatori();">UTILIZATORI</div></li>	
+    <li class="w3-hide-small"><a class="w3-padding-large w3-hover-white" onclick="go_proiecte();">PROIECTE</a></li>
+    <li class="w3-hide-small"><a class="w3-padding-large w3-hover-white" onclick="go_parteneri();">PARTENERI</a></li>
+	<li class="w3-hide-small"><a class="w3-padding-large w3-hover-white" onclick="go_contact();">CONTACT</a></li>
+	<li class="w3-hide-small w3-right"><a class="w3-padding-large w3-hover-white"onclick="go_autentificare();">AUTENTIFICARE</a></li>
+	<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+		document.getElementById ("b_utilizatori").addEventListener ("click", resetEmotes, false);
+		function go_home() {
+		document.getElementById('content').src = "Home1.html";
+		}
+		function go_contact() {
+		document.getElementById('content').src = "Contact.html";
+		}
+		function go_utilizatori() {
+		document.getElementById('content').src = "Utilizatori.php";
+		}		
+		function go_proiecte() {
+		document.getElementById('content').src = "Proiecte.php";
+		}
+		function go_parteneri() {
+		document.getElementById('content').src = "Parteneri.php";
+		}
+		function go_autentificare() {
+		document.getElementById('content').src = "Autentificare.html";
+		}
+	</script>
+  </ul>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-hide w3-hide-large w3-hide-medium">
+    <ul class="w3-navbar w3-left-align w3-large w3-black">
+      <li><a class="w3-padding-large" onclick="go_utilizatori();">Utilizatori</a></li>
+      <li><a class="w3-padding-large" onclick="go_proiecte();">Proiecte</a></li>
+      <li><a class="w3-padding-large" onclick="go_parteneri();">Parteneri</a></li>
+	  <li><a class="w3-padding-large" onclick="go_contact();">Contact</a></li>
+	  <li><a class="w3-padding-large" onclick="go_autentificare();">Autentificare</a></li>
+    </ul>
+  </div>
+</div>
+
+	  </div>
+</header>
+<script>
+
+</script>
+<!-- First Grid -->
+	
+  
+<?php
+
+
+session_start();
+if(isset($_SESSION['id']))
+{
+	if(isset($_SESSION['tip']))
+	{
+		if($_SESSION['tip']=="admin")
+		{
+			
+		}else
+		{
+			<iframe id="content" width="100%" height="100%" src="Home1.html" />
+		}
+	}else
+	{
+		<iframe id="content" width="100%" height="100%" src="Home1.html" />
+	}
+}else
+{
+	<iframe id="content" width="100%" height="100%" src="Home1.html" />
+}
+$servername = "localhost";
+$dbname = "infoel_snac";
+?>
+
+</body>
+</html>
